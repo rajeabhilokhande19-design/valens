@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Abhay</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6; /* Light pink background */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            overflow: hidden; 
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Top Text */
+        h1 {
+            color: #ff4d4d;
+            font-size: 3rem;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        /* Bottom Text (Hidden initially) */
+        h2 {
+            color: #ff4d4d;
+            font-size: 2rem;
+            margin: 20px 0 0 0;
+            display: none; /* Hidden until they click Yes */
+        }
+
+        img {
+            width: 250px; /* Made slightly bigger */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .buttons {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 10px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        #yesBtn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            background-color: #f44336; /* Red */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: absolute; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1 id="mainText">ABHIIIII❤️,<br>WILL YOU BE MY VALANTINE?</h1>
+
+        <img id="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGZlYjJyeTVheHZpaWt1djJ3MDJ4MnQwaG0yYW10aGxnaTltZGl0eCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/eJT738HFSQDVS/giphy.gif">
+        
+        <h2 id="subText">💕YAYYYY!!!💕</h2>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="acceptProposal()">YES</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">NO</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const mainText = document.getElementById("mainText");
+        const subText = document.getElementById("subText");
+        const gif = document.getElementById("gif");
+
+        // Function to move the 'No' button randomly
+        function moveButton() {
+            const maxWidth = window.innerWidth - noBtn.offsetWidth;
+            const maxHeight = window.innerHeight - noBtn.offsetHeight;
+
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+
+            noBtn.style.position = "fixed"; 
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+
+            // Make the 'Yes' button grow
+            let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize * 1.2) + "px";
+            
+            let currentPadding = parseFloat(window.getComputedStyle(yesBtn).padding);
+            yesBtn.style.padding = (currentPadding * 1.1) + "px " + (currentPadding * 2) + "px";
+        }
+
+        // Function for when 'Yes' is clicked
+        function acceptProposal() {
+            // 1. Hide the buttons
+            document.querySelector(".buttons").style.display = "none"; 
+            
+            // 2. Change Top Text
+            mainText.innerHTML = "❤️I KNOW YOU WOULD SAY YESSSS!!❤️";
+            
+            // 3. Reveal Bottom Text
+            subText.style.display = "block";
+            
+            // 4. Change GIF
+            gif.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZxbmx6YW1uMmFvbjdqYzR3MWxqaWh1ODUyajRsdGxzdjY3OGsxMSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/dTyYJaobGiQMY87xRg/giphy.gif"; 
+        }
+    </script>
+
+</body>
+</html>
